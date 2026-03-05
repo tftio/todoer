@@ -1,4 +1,4 @@
-use todoer::project::resolve_project;
+use todoer::project::{resolve_project, resolve_init_project};
 use std::fs;
 use tempfile::tempdir;
 
@@ -12,4 +12,14 @@ fn resolves_project_from_todoer_file() {
 
     let proj = resolve_project(None, None, &sub, &root).unwrap();
     assert_eq!(proj.name, "Name");
+}
+
+#[test]
+fn init_falls_back_to_git_name() {
+    let dir = tempdir().unwrap();
+    let root = dir.path().join("repo");
+    fs::create_dir_all(&root).unwrap();
+
+    let proj = resolve_init_project(None, &root, &root, Some("gitrepo")).unwrap();
+    assert_eq!(proj.name, "gitrepo");
 }
