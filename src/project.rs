@@ -6,6 +6,12 @@ pub struct ProjectFile {
     pub project: String,
 }
 
+#[derive(Debug, Clone)]
+pub struct ResolvedProject {
+    pub name: String,
+    pub key: String,
+}
+
 pub fn find_project_file(start: &Path, home: &Path) -> anyhow::Result<Option<PathBuf>> {
     let mut cur = start;
     loop {
