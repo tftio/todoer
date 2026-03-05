@@ -2,6 +2,22 @@
 
 A small Rust CLI that stores project-scoped todos in SQLite.
 
+## Quick start
+
+```
+# initialize DB (uses XDG data location by default)
+cargo run -- init --project "My Project"
+
+# create a task
+cargo run -- new "write docs"
+
+# list tasks
+cargo run -- list
+
+# update status
+cargo run -- task update status <uuid> COMPLETED
+```
+
 ## Install (dev)
 
 ```
