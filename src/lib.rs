@@ -2,6 +2,7 @@ pub mod cli;
 pub mod commands;
 pub mod config;
 pub mod db;
+pub mod input;
 pub mod models;
 pub mod output;
 pub mod project;
